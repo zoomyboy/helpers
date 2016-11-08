@@ -1,0 +1,13 @@
+{
+    "name": "zoomyboy/helpers",
+    "authors": [
+        {
+            "name": "Philipp Lang",
+            "email": "pille@zoomyboy.de"
+        }
+    ],
+    "require": {},
+	"autoload": {
+		"files": ["Helpers.php"]
+	}
+}
