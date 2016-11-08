@@ -85,14 +85,26 @@ function parseAsHtml($data) {
  * @author Kelly M
  * @link http://php.net/manual/de/function.array-map.php 
  */
-function array_pluck($key, $input) { 
-    if (is_array($key) || !is_array($input)) return array(); 
-    $array = array(); 
-    foreach($input as $v) { 
-        if(array_key_exists($key, $v)) $array[]=$v[$key]; 
-    } 
-    return $array; 
-} 
+if (!function_exists('array_pluck')) {
+	//Make sure we dont collide with the laravel version of array_pluck
+	function array_pluck($key, $input) { 
+		if (is_array($key) || !is_array($input)) return array(); 
+		$array = array(); 
+		foreach($input as $v) { 
+			if(array_key_exists($key, $v)) $array[]=$v[$key]; 
+		} 
+		return $array; 
+	} 
+} else {
+	function l_array_pluck($key, $input) { 
+		if (is_array($key) || !is_array($input)) return array(); 
+		$array = array(); 
+		foreach($input as $v) { 
+			if(array_key_exists($key, $v)) $array[]=$v[$key]; 
+		} 
+		return $array; 
+	} 
+}
 
 /**
  * Downloads an Image from an URL. Returns the saved path
