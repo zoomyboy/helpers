@@ -176,3 +176,20 @@ function getImageHeight($width, $svh) {
 function getImageWidth($height, $svh) {
 	return $height * $svh;
 }
+
+/**
+ * Zählt Werte auf wie 1, 2, 3, 4 und gibt diese Aufzählung als String zurück
+ *
+ * @param array $values Die Werte
+ *
+ * @return string
+ */
+function enum($values) {
+	if(count($values) == 1) {
+		return $values[ 0 ];
+	} else {
+		$end = array_pop($values);
+		
+		return implode(', ', $values) . ' und ' . $end;
+	}
+} 
