@@ -170,6 +170,17 @@ function parseCss($css) {
 	return $ret;
 }
 
+/**
+ * Returns Array of given css or the array itself
+ *
+ * @param string|array $cssOrArray
+ *
+ * @return array
+ */
+function cssOrArray($cssOrArray) {
+	return (is_array($cssOrArray)) ? $cssOrArray : parseCss($cssOrArray);
+}
+
 function getImageHeight($width, $svh) {
 	return $width / $svh;
 }
@@ -193,3 +204,38 @@ function enum($values) {
 		return implode(', ', $values) . ' und ' . $end;
 	}
 } 
+
+/**
+ * Build path out of a givven filename, path and extension
+ *
+ * @param string $path     The path to use (with or without trailing '/')
+ * @param string $filename The filename to use (with or without extension)
+ * @param string $ext      The extension to use instead of the file extension or to concat to the filename
+ */
+function buildPath($path = null, $filename = null, $ext = null) {
+	$ret = '';
+
+	$path = (!is_null($path) && $path) ? rtrim($path, '/') : null;
+	$filename = (!is_null($filename) && $filename) ? trim($filename, '/') : null;
+	$ext = (!is_null($ext) && $ext) ? trim($ext, '.') : null;
+
+	if (!$ext && !$filename) {return $path.'/';}
+
+	//set extension and filename (or return just the path)
+	if ($filename && (!strpos('.', $filename) || $ext)) {
+		if (!$ext) {
+			$ext = pathinfo($filename, PATHINFO_EXTENSION);
+		}
+		$filename = pathinfo($filename, PATHINFO_FILENAME);
+	}
+
+	if ($path) {
+		if ($filename && $ext) {
+			return $path.'/'.$filename.'.'.$ext;
+		} else {
+			trigger_error("WRONG");        //this should never happen!
+		}
+	} else {
+		return $filename.'.'.$ext;
+	}
+}
