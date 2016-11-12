@@ -239,3 +239,8 @@ function buildPath($path = null, $filename = null, $ext = null) {
 		return $filename.'.'.$ext;
 	}
 }
+
+function buildFilename($filename, $extension) {
+	if (strpos(0, $extension) != '.') {$extension = pathinfo($extension, PATHINFO_EXTENSION);}
+	return buildPath(false, $filename, $extension);
+}
