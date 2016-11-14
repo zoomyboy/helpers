@@ -1,9 +1,12 @@
 function toCent(input) {
-	input = input.replace(',', '.');
-	if (input.indexOf('.') !== input.lastIndexOf('.')) {
+	if(input == '' || input == undefined) {return 0;}
+	input = input.toString();
+	input = input.replace(/,/g, '.');
+	if (input.indexOf('-') !== input.lastIndexOf('-') || input.indexOf('.') !== input.lastIndexOf('.') || input.replace('.', '').replace('-', '') == '' || isNaN(parseInt(input.replace('.', '').replace('-', '')))) {
 		return 0;
 	}
 	input = input.split('.');
+	if (input[0] == '-' || (input[1] != undefined && input[1].indexOf('-') !== false)) {return 0;}
 	if (input[1] == undefined || input[1].length == 0) {input[1] = "0";}
 	if (input[0].charAt(0) == '-') {
 		switch(input[1].length) {
