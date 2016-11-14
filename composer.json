@@ -8,6 +8,6 @@
     ],
     "require": {},
 	"autoload": {
-		"files": ["Helpers.php", "ServiceProvider.php"],
+		"files": ["Helpers.php", "ServiceProvider.php"]
 	}
 }
