@@ -196,6 +196,7 @@ function getImageWidth($height, $svh) {
  * @return string
  */
 function enum($values) {
+	if (count($values) == 0) {return '';}
 	if(count($values) == 1) {
 		return $values[ 0 ];
 	} else {
