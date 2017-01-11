@@ -245,3 +245,21 @@ function buildFilename($filename, $extension) {
 	if (strpos(0, $extension) != '.') {$extension = pathinfo($extension, PATHINFO_EXTENSION);}
 	return buildPath(false, $filename, $extension);
 }
+
+/**
+ * Baut einen HTML--Attribut-Sstring der Form
+ * {schlüssel}="{Wert}" von einem PHP-Array
+ *
+ * @param array $attributes Das eingabeArray - assoziativ
+ *
+ * @return string Die Attribut-Zeichenkette
+ */
+function arrToAttr($attributes) {
+	$output = '';
+
+	foreach($attributes as $key => $value){
+		$output .= $key.'="'.$value.'" ';
+	}
+
+	return $output;
+}
