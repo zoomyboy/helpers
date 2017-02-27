@@ -40,3 +40,20 @@ function number_format(number,decimals,dec_point,thousands_sep) {
     str[0] = parts.join(thousands_sep?thousands_sep:',');
     return str.join(dec_point?dec_point:'.');
 }
+
+/**
+ * Generate a random string with a specified length
+ *
+ * @param int $length The length
+ * 
+ * @return string
+ */
+function randomString(length) {
+	var text = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	for( var i=0; i < length; i++ )
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+	return text;
+}
