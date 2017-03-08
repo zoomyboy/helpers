@@ -57,3 +57,7 @@ function randomString(length) {
 
 	return text;
 }
+
+function money(intval) {
+	return accounting.formatMoney(intval / 100);
+}
