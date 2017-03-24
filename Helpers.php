@@ -263,3 +263,13 @@ function arrToAttr($attributes) {
 
 	return $output;
 }
+
+if (!function_exists ('dir_empty')) {
+	function dirEmpty($dir) {
+		return count(glob($dir."/*")) === 0;
+	}
+} else {
+	function r_dirEmpty($dir) {
+		return count(glob($dir."/*")) === 0;
+	}
+}
